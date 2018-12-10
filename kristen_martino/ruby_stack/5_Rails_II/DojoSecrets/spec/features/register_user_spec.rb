@@ -2,7 +2,7 @@ require 'rails_helper'
 feature 'User creates an account' do
   scenario 'successfully creates a new user account' do
     register_user
-    expect(page).to have_content 'Welcome, shane'
+    expect(page).to have_content 'Welcome, kristen'
     expect(page).to have_current_path(user_path(User.last))
   end
   scenario 'unsuccessfully creates a new user account' do
