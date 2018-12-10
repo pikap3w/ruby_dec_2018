@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       flash[:notice] = ['User successfully created']
       flash[:notice] = ["Welcome, #{@user.name}"]
       session[:user_id] = @user.id
-      redirect_to action: 'show', id: @user.id
+      redirect_to controller: 'sessions', action: 'new'
     else
       flash[:notice] = @user.errors.full_messages
       redirect_to action: 'new'
@@ -22,6 +22,11 @@ class UsersController < ApplicationController
   end
 
   def edit; end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+  end
 
   private
 

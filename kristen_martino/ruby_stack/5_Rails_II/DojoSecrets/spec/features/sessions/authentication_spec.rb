@@ -6,8 +6,8 @@ feature 'authentication' do
   feature ':: user sign-in' do
     scenario ':: visits sign-in page' do
       visit '/sessions/new'
-      expect(page).to have_field('email')
-      expect(page).to have_field('password')
+      expect(page).to have_field('user_email')
+      expect(page).to have_field('user_password')
     end
     scenario ':: logs in user if email/password combination is valid' do
       log_in
@@ -26,9 +26,8 @@ feature 'authentication' do
     end
   end
   feature ':: user to log out' do
-    before do
-      log_in
-    end
+    # noinspection RubyBlockToMethodReference
+    before { log_in }
     scenario ':: displays "Log Out" button when user is logged on' do
       expect(page).to have_button('Log Out')
     end
