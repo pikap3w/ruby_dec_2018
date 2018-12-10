@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../../../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/demo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/dojo_dashboard_1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/dojo_dashboard_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/integrating_models" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ninja_gold" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/routes_controllers" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/survey_form" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/time_display" vcs="Git" />
+  </component>
+</project>
