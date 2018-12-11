@@ -9,8 +9,6 @@ feature 'user settings features' do
   end
 
   feature ':: dashboard' do
-    # before(:each) { click_button 'Edit Profile' }
-    # { visit "/users/#{@user.id}/edit" }
 
     scenario ':: visit users edit page' do
       expect(page).to have_field('user_name')

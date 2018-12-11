@@ -4,15 +4,15 @@ class UsersController < ApplicationController
   def new; end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
+    @user = User.create(user_params)
+    if @user.errors.full_messages.any?
+      flash[:notice] = error_msgs(@user)
+      redirect_to action: 'new'
+    else
       flash[:notice] = ['User successfully created']
       flash[:notice] = ["Welcome, #{@user.name}"]
       session[:user_id] = @user.id
       redirect_to controller: 'sessions', action: 'new'
-    else
-      flash[:notice] = @user.errors.full_messages
-      redirect_to action: 'new'
     end
   end
 
@@ -31,9 +31,9 @@ class UsersController < ApplicationController
     @user.update(user_params)
     if @user.errors.full_messages.any?
       flash[:notice] = @user.errors.full_messages
-      redirect_to action: 'edit', id: params[:id]
+      redirect_to action: 'edit'
     else
-      redirect_to action: 'show', id: params[:id]
+      redirect_to @user
     end
   end
 
