@@ -1,3 +1,2 @@
 <h1>Welcome, <%= current_user.name %></h1>
-@secrets = current_user.secrets
-<a href="edit.html.erb">Edit Profile</a>
+<a href="/users/<%= @user.id %>/edit" type="button">Edit Profile</a>

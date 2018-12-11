@@ -21,11 +21,26 @@ class UsersController < ApplicationController
     @user = User.find(id)
   end
 
-  def edit; end
+  def edit
+    id = params[:id]
+    @user = User.find(id)
+  end
 
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    if @user.errors.full_messages.any?
+      flash[:notice] = @user.errors.full_messages
+      redirect_to action: 'edit', id: params[:id]
+    else
+      redirect_to action: 'show', id: params[:id]
+    end
+  end
+
+  def destroy
+    User.destroy(params[:id])
+    session[:user_id] = nil
+    redirect_to action: 'new'
   end
 
   private
