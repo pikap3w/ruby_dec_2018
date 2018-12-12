@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.errors.full_messages.any?
-      flash[:notice] = error_msgs(@user)
+      flash[:notice] = @user.errors.full_messages
       redirect_to action: 'new'
     else
       flash[:notice] = ['User successfully created']
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def show
     id = params[:id]
     @user = User.find(id)
+    @secrets = @user.secrets
   end
 
   def edit

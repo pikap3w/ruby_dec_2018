@@ -1,2 +1,29 @@
 <h1>Welcome, <%= current_user.name %></h1>
+
 <a href="/users/<%= @user.id %>/edit" type="button">Edit Profile</a>
+
+<% if @secrets != nil %>
+  <table>
+    <tr>
+      <th>Secret Content</th>
+      <th>Actions</th>
+    </tr>
+
+    <% @secrets.each do |s| %>
+      <tr>
+        <td><%= s.content %></td>
+        <td>
+          <% if @user == s.user %>
+            <%= button_to 'Delete Secret', secret_path(s), method: :delete %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= form_for :secret, url: secrets_path do |f| %>
+  Content: <%= f.text_field :content %>
+  <%= f.submit "Create Secret" %>
+<% end %>
+

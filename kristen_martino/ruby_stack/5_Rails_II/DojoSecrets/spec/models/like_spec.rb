@@ -15,4 +15,3 @@ RSpec.describe Like, type: :model do
     end
   end
 end
-https://github.com/pikap3w/ruby_dec_2018/tree/dec10/kristen_martino/ruby_stack/5_Rails_II/DojoSecrets 
