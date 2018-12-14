@@ -1,11 +1,12 @@
 class SecretsController < ApplicationController
   def index
     @secrets = Secret.all
-    @user = current_user
+    @count = Like.group(:secret_id).count
   end
 
   def create
-    @secret        = Secret.create(content: params[:secret][:content], user: current_user)
+    # @secret        = Secret.create(content: params[:secret][:content], user: current_user)
+    @secret        = Secret.create(secret_params)
     flash[:notice] = @secret.errors.full_messages if @secret.errors.full_messages.any?
     redirect_to current_user
   end
@@ -18,7 +19,8 @@ class SecretsController < ApplicationController
   private
 
   def secret_params
-    params.require(:secret).permit(:content, :user)
+    params[:secret][:user_id] = session[:user_id]
+    params.require(:secret).permit(:content, :user_id)
   end
 
 
